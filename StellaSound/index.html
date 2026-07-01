@@ -1,0 +1,134 @@
+
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>黛菈之聲</title>
+
+    <h1 class="text">黛菈之聲</h1>
+    
+    <div role="button" class="info" id="butt">Stella Info</div>
+    <div role="button" class="game1" id="butt1">Mini game1</div>
+    <div role="button" class="game2" id="butt2">Mini game2</div>
+    <!---
+    <button id="recommendButton">隨機推薦影片</button>
+    ---->
+    <div id="videoContainer"></div>
+    <button id="playRamdonButton" class="palyRambut">隨機撥放</button>
+    <input type="text" id="userInput" placeholder="請輸入聲音編號...">
+    <button onclick="processInput()">點聲</button>
+    <style>
+
+        .tab-button {
+            background-color: inherit;
+            padding: 10px;
+            cursor: pointer;
+            transition: 0.3s;
+            
+            border: 1px solid rgb(8, 8, 8); /*或none*/
+            border-radius: 5px;
+
+            width: 100px;
+
+            padding: 1px;
+            
+            font-size: 18px;
+            box-shadow: 0 2px 2px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+            transform: translate(10%, 100%);
+        }
+        .active-button {
+            background-color: #4CAF50; /* Green background for the active button */
+            color: white;              /* White text */
+        }
+        .tab-content {
+            display: none;  /* Initially hide all tabs */
+        }
+        .active-tab {
+            display: block;  /* Show the active tab */
+        }
+    </style>
+
+    
+    <div id="buttons"></div>
+    <div class="button-container" id="buttonContainer"></div>   
+    <!--
+    <script src="StellaSound.js"></script>
+    <script src="button.js"></script>
+    <link rel= "stylesheet" href= "StellaSound.css">
+    -->
+    <!-- 取得推薦的YT -->
+    <!--
+    <script defer src="getYTdata.js"></script>
+    -->
+
+</head>
+<body>
+    <!-- 包裹按鈕和輸入框陣列的容器 -->
+    <div id="inputContainer"></div>
+    <div id="buttonContainer"></div>
+
+    <!-- 換頁按鈕 -->
+    <button id="tabButton0" class="tab-button"  onclick="showTab(0)">分類</button>
+    <button id="tabButton1" class="tab-button"  onclick="showTab(1)">001-200</button>
+    <button id="tabButton2" class="tab-button"  onclick="showTab(2)">201-400</button>
+    <button id="tabButton3" class="tab-button"  onclick="showTab(3)">401-600</button>
+    <button id="tabButton4" class="tab-button"  onclick="showTab(4)">601-800</button>
+    <button id="tabButton5" class="tab-button"  onclick="showTab(5)">801-1000</button>
+    <button id="tabButton6" class="tab-button"  onclick="showTab(6)">1001-</button>
+    
+    <div id="Tab0" class="tab-content">
+        <div id="buttonContainerTab0"></div>
+        <!-- 大項下拉選單 -->
+        <select id="totalSelect" style="display: none;">
+            <option value="請選擇分類">--分類--</option>
+            <option value="語言">語言</option>
+            <option value="情境">情境</option>
+            <option value="提及and模仿">提及&模仿</option>
+            <option value="情感">情感</option>
+            <option value="腔調">腔調</option>
+            <option value="其他">其他</option>
+        </select>
+
+        <!-- 小項下拉選單 -->
+        <select id="tagSelect" style="display: none;">
+            <option value="empty">--請選擇--</option>
+        </select>
+
+        <!-- 結果區域 -->
+        <div id="results"></div>
+
+    </div>
+
+    <div id="Tab1" class="tab-content">
+        <div id="buttonContainerTab1"></div>
+    </div>
+
+    <div id="Tab2" class="tab-content">
+        <div id="buttonContainerTab2"></div>
+    </div>
+
+    <div id="Tab3" class="tab-content">
+        <div id="buttonContainerTab3"></div>
+    </div>
+
+    <div id="Tab4" class="tab-content">
+        <div id="buttonContainerTab4"></div>
+    </div>
+
+    <div id="Tab5" class="tab-content">
+        <div id="buttonContainerTab5"></div>
+    </div>
+
+    <div id="Tab6" class="tab-content">
+        <div id="buttonContainerTab6"></div>
+    </div>
+
+    <script src="soundData.js"></script>
+    <script src="StellaSound.js"></script>
+    <script src="button.js"></script>
+    <script src="categorySelect.js"></script>
+    <link rel= "stylesheet" href= "StellaSound.css">
+
+</body>
+</html>
